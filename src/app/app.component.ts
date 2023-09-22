@@ -1,9 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 import { AdItem } from '../data-access/ad-item.model';
 import { AdService } from '../data-access/ad.service';
-import { AdBannerComponent } from 'src/components/ad-banner/ad-banner.component';
 
 @Component({
   selector: 'app-root',
