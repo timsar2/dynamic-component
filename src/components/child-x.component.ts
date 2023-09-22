@@ -5,15 +5,15 @@ import { AdComponent } from '../data-access/ad.component.interface';
 @Component({
   standalone: true,
   imports: [CommonModule],
-  selector: 'app-child-b',
+  selector: 'app-child-x',
   template: `
-    <h1>This is Child B</h1>
+    <h1>This is Child X</h1>
     <div class="job-ad">
       <h4>data.headline: {{data.headline}}</h4>
       <p>data.body: {{data.body}}</p>
     </div>
   `,
 })
-export default class ChildBComponent implements AdComponent {
+export default class ChildXComponent implements AdComponent {
   @Input() data: any;
 }

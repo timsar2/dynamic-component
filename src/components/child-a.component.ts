@@ -9,8 +9,8 @@ import { AdComponent } from '../data-access/ad.component.interface';
   template: `
     <h1>This is Child A</h1>
     <div class="job-ad">
-      <h4>{{data.headline}}</h4>
-      {{data.body}}
+      <h4>data.headline: {{data.headline}}</h4>
+      <p>data.body: {{data.body}}</p>
     </div>
   `,
 })

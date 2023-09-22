@@ -1,15 +1,16 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
   OnChanges,
   OnDestroy,
+  OnInit,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { AdItem } from '../../data-access/ad-item.model';
 import { AdComponent } from '../../data-access/ad.component.interface';
 import { AdDirective } from '../../directives/ad.directive';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -17,7 +18,7 @@ import { AdDirective } from '../../directives/ad.directive';
   imports: [CommonModule, AdDirective],
   templateUrl: `./ad-banner.component.html`,
 })
-export class AdBannerComponent implements OnChanges, OnDestroy {
+export class AdBannerComponent implements OnInit, OnDestroy {
   @Input() ads: AdItem[] = [];
 
   currentAdIndex = -1;
@@ -26,11 +27,9 @@ export class AdBannerComponent implements OnChanges, OnDestroy {
 
   private clearTimer: VoidFunction | undefined;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ads'].currentValue) {
-      this.loadComponent();
-      this.getAds();
-    }
+  ngOnInit(): void {
+    this.loadComponent();
+    this.getAds();
   }
 
   ngOnDestroy() {
@@ -38,16 +37,12 @@ export class AdBannerComponent implements OnChanges, OnDestroy {
   }
 
   loadComponent() {
-    if (!this.adHost?.viewContainerRef) {
+    if (!this.adHost?.viewContainerRef || this.ads.length < 1) {
       return;
     }
 
     const viewContainerRef = this.adHost.viewContainerRef;
     viewContainerRef.clear();
-
-    if (this.ads.length < 1) {
-      return;
-    }
 
     this.currentAdIndex = (this.currentAdIndex + 1) % this.ads.length;
     const adItem = this.ads[this.currentAdIndex];
@@ -55,6 +50,7 @@ export class AdBannerComponent implements OnChanges, OnDestroy {
     const componentRef = viewContainerRef.createComponent<AdComponent>(
       adItem.component
     );
+
     componentRef.instance.data = adItem.data;
   }
 
