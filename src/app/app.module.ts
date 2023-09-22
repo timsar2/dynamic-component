@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdBannerComponent } from 'src/components/ad-banner/ad-banner.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,9 +11,9 @@ import { AdBannerComponent } from 'src/components/ad-banner/ad-banner.component'
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    AdBannerComponent
+    BrowserModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,28 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
-import { AdItem } from '../data-access/ad-item.model';
-import { AdService } from '../data-access/ad.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
-    <div>
-      <app-ad-banner [ads]="ads"></app-ad-banner>
-    </div>
+    <a routerLink="/parent">Show Parent Component</a>
+    <router-outlet></router-outlet>
   `,
 })
-export class AppComponent implements OnInit {
-  ads: AdItem[] = [];
-
-  constructor(private adService: AdService) {}
-
-  ngOnInit() {
-    this.initData();
-  }
-
-  async initData() {
-    const componentsName = ['ChildA', 'ChildB', 'ChildC', 'ChildX'];
-
-    this.ads = await this.adService.getAdsAsync(componentsName);
-  }
-}
+export class AppComponent { }
