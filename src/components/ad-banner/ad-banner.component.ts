@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -13,7 +14,7 @@ import { AdDirective } from '../../directives/ad.directive';
 @Component({
   standalone: true,
   selector: 'app-ad-banner',
-  imports: [AdDirective],
+  imports: [CommonModule, AdDirective],
   templateUrl: `./ad-banner.component.html`,
 })
 export class AdBannerComponent implements OnChanges, OnDestroy {

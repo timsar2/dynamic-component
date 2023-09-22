@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AdBannerComponent } from '../components/ad-banner/ad-banner.component';
 import { AdItem } from '../data-access/ad-item.model';
@@ -6,7 +7,7 @@ import { AdService } from '../data-access/ad.service';
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [AdBannerComponent],
+  imports: [CommonModule, AdBannerComponent],
   template: `
     <div>
       <app-ad-banner [ads]="ads"></app-ad-banner>

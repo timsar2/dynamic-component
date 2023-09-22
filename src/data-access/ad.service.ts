@@ -7,7 +7,7 @@ import { AdItem } from './ad-item.model';
 })
 export class AdService {
   async getAdsAsync(): Promise<AdItem[]> {
-    const componentsName = ['ChildA'];
+    const componentsName = ['ChildA', 'ChildB'];
 
     const addItems: AdItem[] = [];
 
@@ -15,7 +15,6 @@ export class AdService {
       const kebaName = name
         .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
         .toLowerCase();
-
       const c = await import(`../components/${kebaName}.component`);
 
       addItems.push(
