@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { AdItem } from './ad-item.model';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AdService {
         .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
         .toLowerCase();
 
-      const c = await import(`./${kebaName}.component`);
+      const c = await import(`../components/${kebaName}.component`);
 
       addItems.push(
         new AdItem(c.default, {
